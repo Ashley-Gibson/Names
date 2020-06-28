@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using File_Manager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
@@ -24,7 +22,15 @@ namespace Names.Controllers
             List<SelectListItem> originalListItems = new List<SelectListItem>();
             List<SelectListItem> outputListItems = new List<SelectListItem>();
 
-            originalListItems.Add(new SelectListItem() { Text = "This is my first original item", Value = "", Selected = false});
+            TextFileManipulator textFileManipulator = new TextFileManipulator();
+
+            List<string> stringList = textFileManipulator.ConvertRawDataToList();
+
+            foreach (var item in stringList)
+            {
+                originalListItems.Add(new SelectListItem() { Text = item, Value = item, Selected = false });
+            }
+
             outputListItems.Add(new SelectListItem() { Text = "This is my first output item", Value = "", Selected = false });
 
             NamesModel namesModel = new NamesModel()
