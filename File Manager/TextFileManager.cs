@@ -12,29 +12,29 @@ namespace File_Manager
             return File.ReadLines("names.txt").FirstOrDefault();
         }
 
-        public List<string> ConvertRawDataToList()
-        {
-            string rawData = GetRawFileData();            
+        public List<string> ConvertRawDataToList(string rawData)
+        {           
             List<string> stringList = new List<string>();
 
             string[] stringArray = rawData.Split(',');
 
-            foreach (var item in stringArray)
-            {
+            foreach (var item in stringArray) 
                 stringList.Add(item.RemoveQuotes());
-            }
 
             return stringList;
         }
 
         // Maybe add a Quick Sort Algorithm here later
-        public List<string> SortStringList()
+        public List<string> SortStringList(List<string> list)
         {
-            List<string> list = ConvertRawDataToList();
-
             list.Sort();
 
             return list;
+        }
+
+        public void SaveListToFile(List<string> list)
+        {
+            File.WriteAllLines("sorted_names.txt", list);
         }
     }
 }
