@@ -7,5 +7,6 @@ namespace Names.Models
     {
         public IEnumerable<SelectListItem> OutputNames { get; set; }
         public IEnumerable<SelectListItem> OriginalNames { get; set; }
+        public string GrandTotal { get; set; }
     }
 }

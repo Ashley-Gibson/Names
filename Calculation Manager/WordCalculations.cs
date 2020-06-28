@@ -21,5 +21,18 @@ namespace Calculation_Manager
 
             return wordScore;
         }
+
+        public static int CalculateGrandTotalFromList(List<string> list)
+        {
+            int grandTotal = 0;
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                string item = list[i];
+                grandTotal += CalculateWordScore(item, i);
+            }
+
+            return grandTotal;
+        }
     }
 }
