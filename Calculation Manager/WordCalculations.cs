@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Calculation_Manager
 {
@@ -33,6 +35,32 @@ namespace Calculation_Manager
             }
 
             return grandTotal;
+        }
+
+        public static string CalculateHighestTotalScoringNameFromList(List<string> list)
+        {
+            string highestTotalScoringName = "";
+            int highestWordScore = 0;
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                string item = list[i];
+                int wordScore = CalculateWordScore(item, i);
+                if (wordScore > highestWordScore)
+                {
+                    highestWordScore = wordScore;
+                    highestTotalScoringName = item;
+                }
+            }
+
+            return highestTotalScoringName;
+        }
+
+        public static int GetNamePositionFromList(List<string> list, string name)
+        {
+            int index = list.IndexOf(name);
+
+            return index;
         }
     }
 }

@@ -8,5 +8,7 @@ namespace Names.Models
         public IEnumerable<SelectListItem> OutputNames { get; set; }
         public IEnumerable<SelectListItem> OriginalNames { get; set; }
         public string GrandTotal { get; set; }
+        public string HighestTotalScoringName { get; set; }
+        public string HighestTotalScoringNamePosition { get; set; }
     }
 }

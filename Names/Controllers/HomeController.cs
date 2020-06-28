@@ -56,11 +56,17 @@ namespace Names.Controllers
             // Calculate Grand Total
             int grandTotal = WordCalculations.CalculateGrandTotalFromList(sortedStringList);
 
+            // Question 1
+            string highestTotalScoringName = WordCalculations.CalculateHighestTotalScoringNameFromList(sortedStringList);
+            int highestTotalScoringNamePosition = WordCalculations.GetNamePositionFromList(sortedStringList, highestTotalScoringName);
+
             NamesModel namesModel = new NamesModel()
             {
                 OriginalNames = originalListItems,
                 OutputNames = outputListItems,
-                GrandTotal = grandTotal.ToString()
+                GrandTotal = grandTotal.ToString(),
+                HighestTotalScoringName = highestTotalScoringName,
+                HighestTotalScoringNamePosition = highestTotalScoringNamePosition.ToString()
             };
 
             return View(namesModel);
