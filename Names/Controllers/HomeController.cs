@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Names.Models;
 
@@ -20,12 +21,19 @@ namespace Names.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            List<SelectListItem> originalListItems = new List<SelectListItem>();
+            List<SelectListItem> outputListItems = new List<SelectListItem>();
 
-        public IActionResult Privacy()
-        {
-            return View();
+            originalListItems.Add(new SelectListItem() { Text = "This is my first original item", Value = "", Selected = false});
+            outputListItems.Add(new SelectListItem() { Text = "This is my first output item", Value = "", Selected = false });
+
+            NamesModel namesModel = new NamesModel()
+            {
+                OriginalNames = originalListItems,
+                OutputNames = outputListItems
+            };
+
+            return View(namesModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
