@@ -53,10 +53,14 @@ namespace Names.Controllers
                 outputListItems.Add(new SelectListItem() { Text = word + " - " + wordScoreString, Value = wordScoreString, Selected = false });
             }
 
+            // Calculate Grand Total
+            int grandTotal = WordCalculations.CalculateGrandTotalFromList(sortedStringList);
+
             NamesModel namesModel = new NamesModel()
             {
                 OriginalNames = originalListItems,
-                OutputNames = outputListItems
+                OutputNames = outputListItems,
+                GrandTotal = grandTotal.ToString()
             };
 
             return View(namesModel);
