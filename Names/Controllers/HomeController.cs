@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using Calculation_Manager;
 using File_Manager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -39,8 +40,13 @@ namespace Names.Controllers
             // Save sorted Names list to file
             textFileManipulator.SaveListToFile(sortedStringList);
 
-            foreach (var item in sortedStringList)
-                outputListItems.Add(new SelectListItem() { Text = item, Value = item, Selected = false });
+            for (int i = 0; i < sortedStringList.Count - 1; i++)
+            {
+                string item = sortedStringList[i];
+                int wordScore = WordCalculations.CalculateWordScore(item, i + 1);
+                string wordScoreString = wordScore.ToString();
+                outputListItems.Add(new SelectListItem() { Text = item + " - " + wordScoreString, Value = wordScoreString, Selected = false });
+            }
 
             NamesModel namesModel = new NamesModel()
             {
