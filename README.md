@@ -1,7 +1,7 @@
-# Names
+# Names #
 Coding Challenge to sort a list of names from a list in names.txt and make some calculations on the list.
 
-### Coding Challenge
+## Coding Challenge ##
 1) Using names.txt a file containing over five-thousand first names, begin by sorting it into alphabetical order and store as sorted_names.txt
 
 2) For each name in the sorted file Work out the alphabetical value and multiply by its position in the list to obtain a total name score.
@@ -22,3 +22,13 @@ Optional Extras:
 - What is the highest alphabetical value for a name?
 - What is the lowest alphabetical value for a name?
 - What is the average alphebetical value for the names?
+
+## Technologies ##
+
+The technologies used in this project are as follows.
+
+* C# .NET Core Web Application
+
+## Project Management ##
+
+[Names - Azure DevOps](https://ashley-gibson.visualstudio.com/Names/_boards/board/t/Names%20Team/Stories "Names - Azure DevOps")
