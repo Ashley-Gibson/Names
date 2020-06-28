@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using Calculation_Manager;
 using File_Manager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -36,11 +37,21 @@ namespace Names.Controllers
             // Sort Names list
             List<string> sortedStringList = textFileManipulator.SortStringList(rawDataStringList);
 
-            // Save sorted Names list to file
-            textFileManipulator.SaveListToFile(sortedStringList);
+            // Delete previous sorted_names.txt
+            if(System.IO.File.Exists("sorted_names.txt"))
+                System.IO.File.Delete("sorted_names.txt");
 
-            foreach (var item in sortedStringList)
-                outputListItems.Add(new SelectListItem() { Text = item, Value = item, Selected = false });
+            for (int i = 0; i < sortedStringList.Count - 1; i++)
+            {
+                string word = sortedStringList[i];
+                int wordScore = WordCalculations.CalculateWordScore(word, i + 1);
+                string wordScoreString = wordScore.ToString();
+
+                // Save sorted Names list to file
+                textFileManipulator.WriteStringToFile(word, wordScoreString);
+                // Output Sorted List to ListBox
+                outputListItems.Add(new SelectListItem() { Text = word + " - " + wordScoreString, Value = wordScoreString, Selected = false });
+            }
 
             NamesModel namesModel = new NamesModel()
             {
