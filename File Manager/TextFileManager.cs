@@ -26,5 +26,15 @@ namespace File_Manager
 
             return stringList;
         }
+
+        // Maybe add a Quick Sort Algorithm here later
+        public List<string> SortStringList()
+        {
+            List<string> list = ConvertRawDataToList();
+
+            list.Sort();
+
+            return list;
+        }
     }
 }
