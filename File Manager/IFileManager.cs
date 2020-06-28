@@ -5,6 +5,6 @@ namespace File_Manager
     public interface IFileManager
     {
         string GetRawFileData();
-        List<string> ConvertRawDataToList();
+        List<string> ConvertRawDataToList(string rawData);
     }
 }

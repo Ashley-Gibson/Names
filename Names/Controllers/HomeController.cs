@@ -24,19 +24,23 @@ namespace Names.Controllers
 
             TextFileManipulator textFileManipulator = new TextFileManipulator();
 
-            List<string> rawDataStringList = textFileManipulator.ConvertRawDataToList();
+            // Get Raw Name Data from file
+            string rawData = textFileManipulator.GetRawFileData();
+
+            // Convert Raw Name Data to list
+            List<string> rawDataStringList = textFileManipulator.ConvertRawDataToList(rawData);
 
             foreach (var item in rawDataStringList)
-            {
                 originalListItems.Add(new SelectListItem() { Text = item, Value = item, Selected = false });
-            }
 
-            List<string> sortedStringList = textFileManipulator.SortStringList();
+            // Sort Names list
+            List<string> sortedStringList = textFileManipulator.SortStringList(rawDataStringList);
+
+            // Save sorted Names list to file
+            textFileManipulator.SaveListToFile(sortedStringList);
 
             foreach (var item in sortedStringList)
-            {
                 outputListItems.Add(new SelectListItem() { Text = item, Value = item, Selected = false });
-            }
 
             NamesModel namesModel = new NamesModel()
             {
