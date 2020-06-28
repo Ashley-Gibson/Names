@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Calculation Manager\Calculation Manager.csproj" />
+    <ProjectReference Include="..\File Manager\File Manager.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -2,3 +2,11 @@
 .vs/
 Names/obj/
 Names/wwwroot/lib/
+Names/bin/
+Extensions/bin/
+Extensions/obj/
+File Manager/bin/
+File Manager/obj/
+Names/sorted_names.txt
+Calculation Manager/bin/
+Calculation Manager/obj/

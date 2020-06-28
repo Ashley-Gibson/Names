@@ -1,8 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Names.Models.NamesModel
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <h1 class="display-4 text-center">Names</h1>
+    <p class="text-center">
+        <a href="https://github.com/Ashley-Gibson/Names" target="_blank">Names</a> is a Coding Challenge to sort a list of names from a list in names.txt and make some calculations on the list.
+    </p>
+    <div class="row controlPanel text-center">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <p>
+                <b>Grand Total: @Model.GrandTotal</b>
+            </p>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row listPanel text-center">
+        <div class="col-6 originalList">
+            <p><b>Original List</b></p>
+            @Html.ListBoxFor(n => n.OriginalNames, Model.OriginalNames, new { size = 25, style = "width:100%;max-height:100%;" })
+        </div>
+        <div class="col-6 outputList">
+            <p><b>Sorted List</b></p>
+            @Html.ListBoxFor(n => n.OutputNames, Model.OutputNames, new { size = 25, style = "width:100%;max-height:100%;" })
+        </div>
+    </div>
+    <p></p>
+    <div class="row optionalExtrasPanel">
+        <div class="col-12">
+            <p class="m-0" style="font-weight:bold;">
+                What is the highest total scoring name and what position is it in?
+            </p>
+            <p class="m-0">
+                Highest total scoring name: <b>@Model.HighestTotalScoringName</b>
+            </p>
+            <p class="m-0">
+                Position: <b>@Model.HighestTotalScoringNamePosition</b>
+            </p>
+        </div>
+    </div>
 </div>
