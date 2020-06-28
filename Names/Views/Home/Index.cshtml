@@ -11,15 +11,19 @@
     </p>
     <div class="row controlPanel">
         <div class="col-2"></div>
-        <div class="col-8"></div>
+        <div class="col-8">
+            <p>
+                <b>Grand Total: @Model.GrandTotal</b>
+            </p>
+        </div>
         <div class="col-2"></div>
     </div>
-    <div class="row outputPanel">
+    <div class="row listPanel">
         <div class="col-6 originalList">
-            @Html.ListBoxFor(n => n.OriginalNames, Model.OriginalNames, new { size=25, style = "width:100%;max-height:100%;" })
+            @Html.ListBoxFor(n => n.OriginalNames, Model.OriginalNames, new { size = 25, style = "width:100%;max-height:100%;" })
         </div>
         <div class="col-6 outputList">
-            @Html.ListBoxFor(n => n.OutputNames, Model.OutputNames, new { size=25, style = "width:100%;max-height:100%;" })
+            @Html.ListBoxFor(n => n.OutputNames, Model.OutputNames, new { size = 25, style = "width:100%;max-height:100%;" })
         </div>
     </div>
 </div>
