@@ -32,9 +32,13 @@ namespace File_Manager
             return list;
         }
 
-        public void SaveListToFile(List<string> list)
+        public void WriteStringToFile(string word, string wordScoreString)
         {
-            File.WriteAllLines("sorted_names.txt", list);
+            StreamWriter sorted_names = File.AppendText("sorted_names.txt");
+
+            sorted_names.WriteLine(word + " - " + wordScoreString);
+
+            sorted_names.Close();
         }
     }
 }
