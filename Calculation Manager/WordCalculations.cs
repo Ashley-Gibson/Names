@@ -86,9 +86,9 @@ namespace Calculation_Manager
         }
 
         public static Tuple<string, int> CalculateHighestAlphabeticalValueAndNameFromList(List<string> list)
-        {          
-            int highestAlphabeticalValue = 0;
+        {
             string highestAlphabeticalValueName = "";
+            int highestAlphabeticalValue = 0;
 
             for (int i = 0; i < list.Count - 1; i++)
             {
@@ -96,14 +96,35 @@ namespace Calculation_Manager
                 int wordScore = CalculateAlphabeticalValue(item, i + 1);
                 if (wordScore > highestAlphabeticalValue)
                 {
-                    highestAlphabeticalValue = wordScore;
                     highestAlphabeticalValueName = item;
+                    highestAlphabeticalValue = wordScore;
                 }
             }
 
             Tuple<string, int> highestAlphabeticalValueAndName = new Tuple<string, int>(highestAlphabeticalValueName, highestAlphabeticalValue);
 
             return highestAlphabeticalValueAndName;
+        }
+
+        public static Tuple<string, int> CalculateLowestAlphabeticalValueAndNameFromList(List<string> list)
+        {
+            string lowestAlphabeticalValueName = "";
+            int lowestAlphabeticalValue = CalculateAlphabeticalValue(list[list.Count - 1], list.Count);
+
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                string item = list[i];
+                int wordScore = CalculateAlphabeticalValue(item, i + 1);
+                if (wordScore < lowestAlphabeticalValue)
+                {
+                    lowestAlphabeticalValueName = item;
+                    lowestAlphabeticalValue = wordScore;
+                }
+            }
+
+            Tuple<string, int> lowestAlphabeticalValueAndName = new Tuple<string, int>(lowestAlphabeticalValueName, lowestAlphabeticalValue);
+
+            return lowestAlphabeticalValueAndName;
         }
 
         public static int GetNamePositionFromList(List<string> list, string name)
