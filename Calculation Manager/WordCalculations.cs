@@ -127,6 +127,21 @@ namespace Calculation_Manager
             return lowestAlphabeticalValueAndName;
         }
 
+        public static int CalculateAverageAlphabeticalValueFromList(List<string> list)
+        {
+            int totalAlphabeticalValueOfAllNames = 0;
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                string item = list[i];
+                totalAlphabeticalValueOfAllNames += CalculateAlphabeticalValue(item, i);
+            }
+
+            int averageAlphabeticalValue = totalAlphabeticalValueOfAllNames / list.Count;
+
+            return averageAlphabeticalValue;
+        }
+
         public static int GetNamePositionFromList(List<string> list, string name)
         {
             int index = list.IndexOf(name);
