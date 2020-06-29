@@ -24,6 +24,16 @@ namespace Calculation_Manager
             return wordScore;
         }
 
+        private static int CalculateAlphabeticalValue(string word, int index)
+        {
+            int wordScore = 0;
+
+            foreach (char letter in word)
+                wordScore += Letters[letter];
+
+            return wordScore;
+        }
+
         public static int CalculateGrandTotalFromList(List<string> list)
         {
             int grandTotal = 0;
@@ -73,6 +83,27 @@ namespace Calculation_Manager
             }
 
             return lowestTotalScoringName;
+        }
+
+        public static Tuple<string, int> CalculateHighestAlphabeticalValueAndNameFromList(List<string> list)
+        {          
+            int highestAlphabeticalValue = 0;
+            string highestAlphabeticalValueName = "";
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                string item = list[i];
+                int wordScore = CalculateAlphabeticalValue(item, i + 1);
+                if (wordScore > highestAlphabeticalValue)
+                {
+                    highestAlphabeticalValue = wordScore;
+                    highestAlphabeticalValueName = item;
+                }
+            }
+
+            Tuple<string, int> highestAlphabeticalValueAndName = new Tuple<string, int>(highestAlphabeticalValueName, highestAlphabeticalValue);
+
+            return highestAlphabeticalValueAndName;
         }
 
         public static int GetNamePositionFromList(List<string> list, string name)

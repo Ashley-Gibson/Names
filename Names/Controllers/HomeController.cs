@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Calculation_Manager;
 using File_Manager;
@@ -64,6 +65,11 @@ namespace Names.Controllers
             string lowestTotalScoringName = WordCalculations.CalculateLowestTotalScoringNameFromList(sortedStringList);
             int lowestTotalScoringNamePosition = WordCalculations.GetNamePositionFromList(sortedStringList, lowestTotalScoringName);
 
+            // Question 3
+            Tuple<string, int> highestAlphabeticalValueAndName = WordCalculations.CalculateHighestAlphabeticalValueAndNameFromList(sortedStringList);
+            string highestAlphabeticalValueName = highestAlphabeticalValueAndName.Item1;
+            int highestAlphabeticalValue = highestAlphabeticalValueAndName.Item2;
+
             NamesModel namesModel = new NamesModel()
             {
                 OriginalNames = originalListItems,
@@ -72,7 +78,9 @@ namespace Names.Controllers
                 HighestTotalScoringName = highestTotalScoringName,
                 HighestTotalScoringNamePosition = highestTotalScoringNamePosition.ToString(),
                 LowestTotalScoringName = lowestTotalScoringName,
-                LowestTotalScoringNamePosition = lowestTotalScoringNamePosition.ToString()
+                LowestTotalScoringNamePosition = lowestTotalScoringNamePosition.ToString(),
+                HighestAlphabeticalValueName = highestAlphabeticalValueName,
+                HighestAlphabeticalValue = highestAlphabeticalValue.ToString()
             };
 
             return View(namesModel);
