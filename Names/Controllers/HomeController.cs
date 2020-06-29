@@ -75,6 +75,9 @@ namespace Names.Controllers
             string lowestAlphabeticalValueName = lowestAlphabeticalValueAndName.Item1;
             int lowestAlphabeticalValue = lowestAlphabeticalValueAndName.Item2;
 
+            // Question 5
+            int averageAlphabeticalValue = WordCalculations.CalculateAverageAlphabeticalValueFromList(sortedStringList);
+
             NamesModel namesModel = new NamesModel()
             {
                 OriginalNames = originalListItems,
@@ -87,7 +90,8 @@ namespace Names.Controllers
                 HighestAlphabeticalValueName = highestAlphabeticalValueName,
                 HighestAlphabeticalValue = highestAlphabeticalValue.ToString(),
                 LowestAlphabeticalValueName = lowestAlphabeticalValueName,
-                LowestAlphabeticalValue = lowestAlphabeticalValue.ToString()
+                LowestAlphabeticalValue = lowestAlphabeticalValue.ToString(),
+                AverageAlphabeticalValue = averageAlphabeticalValue.ToString()
             };
 
             return View(namesModel);
