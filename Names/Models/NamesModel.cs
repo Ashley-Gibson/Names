@@ -12,5 +12,8 @@ namespace Names.Models
         public string HighestTotalScoringNamePosition { get; set; }
         public string LowestTotalScoringName { get; set; }
         public string LowestTotalScoringNamePosition { get; set; }
+
+        public string HighestAlphabeticalValueName { get; set; }
+        public string HighestAlphabeticalValue { get; set; }
     }
 }
