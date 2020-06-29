@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Calculation_Manager;
 using File_Manager;
@@ -60,13 +61,37 @@ namespace Names.Controllers
             string highestTotalScoringName = WordCalculations.CalculateHighestTotalScoringNameFromList(sortedStringList);
             int highestTotalScoringNamePosition = WordCalculations.GetNamePositionFromList(sortedStringList, highestTotalScoringName);
 
+            // Question 2
+            string lowestTotalScoringName = WordCalculations.CalculateLowestTotalScoringNameFromList(sortedStringList);
+            int lowestTotalScoringNamePosition = WordCalculations.GetNamePositionFromList(sortedStringList, lowestTotalScoringName);
+
+            // Question 3
+            Tuple<string, int> highestAlphabeticalValueAndName = WordCalculations.CalculateHighestAlphabeticalValueAndNameFromList(sortedStringList);
+            string highestAlphabeticalValueName = highestAlphabeticalValueAndName.Item1;
+            int highestAlphabeticalValue = highestAlphabeticalValueAndName.Item2;
+
+            // Question 4
+            Tuple<string, int> lowestAlphabeticalValueAndName = WordCalculations.CalculateLowestAlphabeticalValueAndNameFromList(sortedStringList);
+            string lowestAlphabeticalValueName = lowestAlphabeticalValueAndName.Item1;
+            int lowestAlphabeticalValue = lowestAlphabeticalValueAndName.Item2;
+
+            // Question 5
+            int averageAlphabeticalValue = WordCalculations.CalculateAverageAlphabeticalValueFromList(sortedStringList);
+
             NamesModel namesModel = new NamesModel()
             {
                 OriginalNames = originalListItems,
                 OutputNames = outputListItems,
                 GrandTotal = grandTotal.ToString(),
                 HighestTotalScoringName = highestTotalScoringName,
-                HighestTotalScoringNamePosition = highestTotalScoringNamePosition.ToString()
+                HighestTotalScoringNamePosition = highestTotalScoringNamePosition.ToString(),
+                LowestTotalScoringName = lowestTotalScoringName,
+                LowestTotalScoringNamePosition = lowestTotalScoringNamePosition.ToString(),
+                HighestAlphabeticalValueName = highestAlphabeticalValueName,
+                HighestAlphabeticalValue = highestAlphabeticalValue.ToString(),
+                LowestAlphabeticalValueName = lowestAlphabeticalValueName,
+                LowestAlphabeticalValue = lowestAlphabeticalValue.ToString(),
+                AverageAlphabeticalValue = averageAlphabeticalValue.ToString()
             };
 
             return View(namesModel);
