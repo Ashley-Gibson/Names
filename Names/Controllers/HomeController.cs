@@ -70,6 +70,11 @@ namespace Names.Controllers
             string highestAlphabeticalValueName = highestAlphabeticalValueAndName.Item1;
             int highestAlphabeticalValue = highestAlphabeticalValueAndName.Item2;
 
+            // Question 4
+            Tuple<string, int> lowestAlphabeticalValueAndName = WordCalculations.CalculateLowestAlphabeticalValueAndNameFromList(sortedStringList);
+            string lowestAlphabeticalValueName = lowestAlphabeticalValueAndName.Item1;
+            int lowestAlphabeticalValue = lowestAlphabeticalValueAndName.Item2;
+
             NamesModel namesModel = new NamesModel()
             {
                 OriginalNames = originalListItems,
@@ -80,7 +85,9 @@ namespace Names.Controllers
                 LowestTotalScoringName = lowestTotalScoringName,
                 LowestTotalScoringNamePosition = lowestTotalScoringNamePosition.ToString(),
                 HighestAlphabeticalValueName = highestAlphabeticalValueName,
-                HighestAlphabeticalValue = highestAlphabeticalValue.ToString()
+                HighestAlphabeticalValue = highestAlphabeticalValue.ToString(),
+                LowestAlphabeticalValueName = lowestAlphabeticalValueName,
+                LowestAlphabeticalValue = lowestAlphabeticalValue.ToString()
             };
 
             return View(namesModel);
