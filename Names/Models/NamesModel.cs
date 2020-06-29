@@ -10,5 +10,7 @@ namespace Names.Models
         public string GrandTotal { get; set; }
         public string HighestTotalScoringName { get; set; }
         public string HighestTotalScoringNamePosition { get; set; }
+        public string LowestTotalScoringName { get; set; }
+        public string LowestTotalScoringNamePosition { get; set; }
     }
 }

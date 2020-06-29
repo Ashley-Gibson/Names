@@ -45,7 +45,7 @@ namespace Calculation_Manager
             for (int i = 0; i < list.Count - 1; i++)
             {
                 string item = list[i];
-                int wordScore = CalculateWordScore(item, i);
+                int wordScore = CalculateWordScore(item, i + 1);
                 if (wordScore > highestWordScore)
                 {
                     highestWordScore = wordScore;
@@ -56,11 +56,30 @@ namespace Calculation_Manager
             return highestTotalScoringName;
         }
 
+        public static string CalculateLowestTotalScoringNameFromList(List<string> list)
+        {
+            string lowestTotalScoringName = "";
+            int lowestWordScore = CalculateWordScore(list[list.Count - 1], list.Count);
+
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                string item = list[i];
+                int wordScore = CalculateWordScore(item, i + 1);
+                if (wordScore < lowestWordScore)
+                {
+                    lowestWordScore = wordScore;
+                    lowestTotalScoringName = item;
+                }
+            }
+
+            return lowestTotalScoringName;
+        }
+
         public static int GetNamePositionFromList(List<string> list, string name)
         {
             int index = list.IndexOf(name);
 
-            return index;
+            return index + 1;
         }
     }
 }

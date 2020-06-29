@@ -60,13 +60,19 @@ namespace Names.Controllers
             string highestTotalScoringName = WordCalculations.CalculateHighestTotalScoringNameFromList(sortedStringList);
             int highestTotalScoringNamePosition = WordCalculations.GetNamePositionFromList(sortedStringList, highestTotalScoringName);
 
+            // Question 2
+            string lowestTotalScoringName = WordCalculations.CalculateLowestTotalScoringNameFromList(sortedStringList);
+            int lowestTotalScoringNamePosition = WordCalculations.GetNamePositionFromList(sortedStringList, lowestTotalScoringName);
+
             NamesModel namesModel = new NamesModel()
             {
                 OriginalNames = originalListItems,
                 OutputNames = outputListItems,
                 GrandTotal = grandTotal.ToString(),
                 HighestTotalScoringName = highestTotalScoringName,
-                HighestTotalScoringNamePosition = highestTotalScoringNamePosition.ToString()
+                HighestTotalScoringNamePosition = highestTotalScoringNamePosition.ToString(),
+                LowestTotalScoringName = lowestTotalScoringName,
+                LowestTotalScoringNamePosition = lowestTotalScoringNamePosition.ToString()
             };
 
             return View(namesModel);
