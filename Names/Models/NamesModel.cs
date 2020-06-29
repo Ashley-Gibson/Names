@@ -15,5 +15,7 @@ namespace Names.Models
 
         public string HighestAlphabeticalValueName { get; set; }
         public string HighestAlphabeticalValue { get; set; }
+        public string LowestAlphabeticalValueName { get; set; }
+        public string LowestAlphabeticalValue { get; set; }
     }
 }
